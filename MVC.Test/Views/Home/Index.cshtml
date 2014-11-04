@@ -25,7 +25,7 @@
                         <img class="item-productimage" src='@Html.Resolve(" />Content/Images/Products/" + item.Id.ToString() + ".jpg")' /> />
                     </a>
                     <div class="item-productname">
-                        @Html.ActionLink(product.BrandName + " " + item.Name, "Detail", "Product", new { id = item.Id }, null)
+                        @Html.ActionLink(item.BrandName + " " + item.Name, "Detail", "Product", new { id = item.Id }, null)
                     </div>
                     <div class="item-price">
                         @Html.Encode(item.Price)
