@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>Log4Net.Extensions</id>
+    <version>0.1.0.0</version>
+    <title>Simple Extension Methods for Log4Net</title>
+    <authors>Adam Griffiths</authors>
+    <owners>Adam Griffiths</owners>
+    <licenseUrl>https://github.com/ardliath/Log4Net.Extensions/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/ardliath/Log4Net.Extensions</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>A collection of simple Extension Methods for Log4Net.</description>
+    <releaseNotes />
+    <tags>log4net</tags>
+    <dependencies>
+      <dependency id="log4net" version="2.0.3" />
+    </dependencies>
+  </metadata>
+</package>

@@ -1,0 +1,37 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@using MVC.Test.Helpers
+@using Agathas.Storefront.Controllers.ViewModels.ProductCatalog
+
+
+@model IEnumerable<Agathas.Storefront.Controllers.ViewModels.ProductCatalog.HomePageView>
+
+<img width="559" height="297"
+     src='@Html.Resolve(" />Content/Images/Products/product-lifestyle.jpg")'
+     style="border-width: 0px; padding: 0px; margin: 0px" /><div style="clear: both;"></div>
+<h2>Top Products</h2>
+<div id="items" style="border-width: 1px; padding: 0px; margin: 0px">
+    <ul class="items-list">
+        @foreach (Agathas.Storefront.Controllers.ViewModels.ProductCatalog.HomePageView product in Model)
+        {
+            foreach (Agathas.Storefront.Services.ViewModels.ProductSummaryView item in product.Products)
+            {
+                <li class="item-detail">
+
+                    <a class='item-productimage-link' href='@Url.Action("detail", "Product", new { id = item.Id }, null)'>
+                        <img class="item-productimage" src='@Html.Resolve(" />Content/Images/Products/" + item.Id.ToString() + ".jpg")' /> />
+                    </a>
+                    <div class="item-productname">
+                        @Html.ActionLink(product.BrandName + " " + item.Name, "Detail", "Product", new { id = item.Id }, null)
+                    </div>
+                    <div class="item-price">
+                        @Html.Encode(item.Price)
+                    </div>
+                </li>
+            }
+        }
+    </ul>
+</div>
