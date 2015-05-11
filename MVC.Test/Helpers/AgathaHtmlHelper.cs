@@ -2,7 +2,7 @@
 using System.Text;
 using System.Web.Mvc;
 
-namespace MVC.Test.Helpers
+namespace Agathas.Storefront.UI.Web.MVC5.Helpers
 {
     public static class TestHtmlHelper
     {

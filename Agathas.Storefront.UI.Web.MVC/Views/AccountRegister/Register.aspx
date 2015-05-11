@@ -1,6 +1,6 @@
 <%@ Page Language="C#" 
          MasterPageFile="~/Views/Shared/Site.Master" 
-         Inherits="System.Web.Mvc.ViewPage<AccountView>" %>
+         Inherits="System.Web.Mvc.ViewPage<Agathas.Storefront.Controllers.ViewModels.Account.AccountView>" %>
 <%@ Import Namespace="Agathas.Storefront.Controllers.ViewModels.Account" %>
 
 <asp:Content ID="registerTitle" ContentPlaceHolderID="TitleContent" runat="server">
@@ -17,6 +17,8 @@
    </div>
    </p>
    <% } %>
+   
+
 
     <h2>Associate an existing acount with us</h2>
     <% Html.RenderPartial("~/Views/Shared/JanrainLogin.ascx", 

@@ -11,6 +11,7 @@ using Agathas.Storefront.Infrastructure.Configuration;
 using Agathas.Storefront.Infrastructure.Email;
 using Agathas.Storefront.Infrastructure.Logging;
 using Agathas.Storefront.Services;
+using Agathas.Storefront.UI.Web.MVC5;
 using StructureMap;
 
 namespace MVC.Test

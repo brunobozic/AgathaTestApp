@@ -108,7 +108,7 @@
     <Compile Include="AutoMapperBootStrapper.cs" />
     <Compile Include="BasketMapper.cs" />
     <Compile Include="Controllers\AccountLogOnController.cs" />
-    <Compile Include="Controllers\AccountRegisterController%28.cs" />
+    <Compile Include="Controllers\AccountRegisterController.cs" />
     <Compile Include="Controllers\BaseAccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\BasketController.cs" />

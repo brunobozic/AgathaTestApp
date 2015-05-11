@@ -1,40 +1,107 @@
-﻿@model MVC.Test.Models.RegisterViewModel
+﻿@model Agathas.Storefront.Controllers.ViewModels.Account.AccountView
+
 @{
     ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    <script>
+        $(function() {
+            $('.validation-summary-errors').each(function() {
+                $(this).addClass('alert');
+                $(this).addClass('alert-danger');
+            });
+
+            $('form').each(function() {
+                $(this).find('div.form-group').each(function() {
+                    if ($(this).find('span.field-validation-error').length > 0) {
+                        $(this).addClass('has-error');
+                        $(this).find('span.field-validation-error').
+                            removeClass('field-validation-error');
+                    }
+                });
+            });
+
+        });
+    </script>
 }
 
 <h2>@ViewBag.Title.</h2>
 
-@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-{
-    @Html.AntiForgeryToken()
-    <h4>Create a new account.</h4>
-    <hr />
-    @Html.ValidationSummary()
-    <div class="form-group">
-        @Html.LabelFor(m => m.UserName, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
-        </div>
+
+<div class="row">
+    <div class="col-md-8">
+        @if (Model.HasIssue)
+        {
+            <p>
+                <div style="background-color: #FFCCBA; color: #D63301; padding: 15px 10px 15px 50px;">
+                    @Html.Encode(Model.Message)
+                </div>
+            </p>
+        }
+
+   
+        <h2>Don't have an internet account? Create an account with us</h2>
+
+        @using (Html.BeginForm("Register", "Account", FormMethod.Post, new {@class = "form-horizontal", role = "form"}))
+        {
+            @Html.AntiForgeryToken()
+
+            @Html.ValidationSummary()
+
+            <div>
+                <div class="form-group">
+                    @Html.LabelFor(i => i.Email, new {@class = "col-md-2 control-label"})<br />
+                    <div class="col-md-offset-2 col-md-10">
+                        @Html.TextBoxFor(i => i.Email, new {@class = "form-control"}))
+                        @Html.ValidationMessageFor(m => m.Email)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Password, new {@class = "col-md-2 control-label"})
+                    <div class="col-md-10">
+                        @Html.PasswordFor(m => m.Password, new {@class = "form-control"})
+                        @Html.ValidationMessageFor(m => m.Password)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.ConfirmPassword, new {@class = "col-md-2 control-label"})
+                    <div class="col-md-10">
+                        @Html.PasswordFor(m => m.ConfirmPassword, new {@class = "form-control"})
+                        @Html.ValidationMessageFor(m => m.ConfirmPassword)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(i => i.FirstName, new {@class = "col-md-2 control-label"})<br />
+                    <div class="col-md-offset-2 col-md-10">
+
+                        @Html.TextBoxFor(i => i.FirstName, new {@class = "form-control"})
+                        @Html.ValidationMessageFor(m => m.FirstName)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(i => i.SecondName, new {@class = "col-md-2 control-label"})<br />
+
+                    <div class="col-md-offset-2 col-md-10">
+
+                        @Html.TextBoxFor(i => i.SecondName, new {@class = "form-control"})
+                        @Html.ValidationMessageFor(m => m.SecondName)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" class="btn btn-default" value="Register" />
+                    </div>
+                </div>
+            </div>
+        }
     </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-        </div>
+    <div class="col-md-4">
+        <section id="socialLoginForm">
+            <h2>Associate an existing acount with us</h2>
+            @Html.RenderPartial("~/Views/Account/_JanrainLogin.cshtml", Model.CallBackSettings);
+            @Html.Partial("_ExternalLoginsListPartial", new {Action = "ExternalLogin", ViewBag.ReturnUrl})
+        </section>
     </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" class="btn btn-default" value="Register" />
-        </div>
-    </div>
-}
+</div> 
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

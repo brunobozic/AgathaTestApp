@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace MVC.Test
+namespace Agathas.Storefront.UI.Web.MVC5
 {
     public class RouteConfig
     {

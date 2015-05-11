@@ -1,7 +1,6 @@
-﻿using System.Web;
-using System.Web.Optimization;
+﻿using System.Web.Optimization;
 
-namespace MVC.Test
+namespace Agathas.Storefront.UI.Web.MVC5
 {
     public class BundleConfig
     {

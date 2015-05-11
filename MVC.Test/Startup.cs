@@ -1,8 +1,9 @@
-﻿using Microsoft.Owin;
+﻿using Agathas.Storefront.UI.Web.MVC5;
+using Microsoft.Owin;
 using Owin;
 
-[assembly: OwinStartupAttribute(typeof(MVC.Test.Startup))]
-namespace MVC.Test
+[assembly: OwinStartup(typeof(Startup))]
+namespace Agathas.Storefront.UI.Web.MVC5
 {
     public partial class Startup
     {

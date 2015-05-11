@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace MVC.Test.Models
+namespace Agathas.Storefront.UI.Web.MVC5.Models
 {
     public class ExternalLoginConfirmationViewModel
     {

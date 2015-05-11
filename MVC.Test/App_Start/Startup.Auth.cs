@@ -3,7 +3,7 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Owin;
 
-namespace MVC.Test
+namespace Agathas.Storefront.UI.Web.MVC5
 {
     public partial class Startup
     {

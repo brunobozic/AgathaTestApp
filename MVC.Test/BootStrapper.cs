@@ -1,11 +1,12 @@
 ﻿using Agathas.Storefront.Controllers.ActionArguments;
 using Agathas.Storefront.Infrastructure.Authentication;
+using Agathas.Storefront.Infrastructure.Configuration;
 using Agathas.Storefront.Infrastructure.CookieStorage;
 using Agathas.Storefront.Infrastructure.Domain.Events;
+using Agathas.Storefront.Infrastructure.Email;
 using Agathas.Storefront.Infrastructure.Logging;
 using Agathas.Storefront.Infrastructure.Payments;
 using Agathas.Storefront.Infrastructure.UnitOfWork;
-using Agathas.Storefront.Infrastructure.Configuration;
 using Agathas.Storefront.Model.Basket;
 using Agathas.Storefront.Model.Categories;
 using Agathas.Storefront.Model.Customers;
@@ -16,12 +17,10 @@ using Agathas.Storefront.Model.Shipping;
 using Agathas.Storefront.Services.DomainEventHandlers;
 using Agathas.Storefront.Services.Implementations;
 using Agathas.Storefront.Services.Interfaces;
-using Agathas.Storefront.Infrastructure.Email;
-using Agathas.Storefront.Repository.NHibernateR.Repositories;
-using StructureMap.Configuration.DSL;
 using StructureMap;
+using StructureMap.Configuration.DSL;
 
-namespace MVC.Test
+namespace Agathas.Storefront.UI.Web.MVC5
 {
     public class BootStrapper
     {

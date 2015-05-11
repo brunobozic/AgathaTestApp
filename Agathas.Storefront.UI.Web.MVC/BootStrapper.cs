@@ -1,11 +1,12 @@
 ﻿using Agathas.Storefront.Controllers.ActionArguments;
 using Agathas.Storefront.Infrastructure.Authentication;
+using Agathas.Storefront.Infrastructure.Configuration;
 using Agathas.Storefront.Infrastructure.CookieStorage;
 using Agathas.Storefront.Infrastructure.Domain.Events;
+using Agathas.Storefront.Infrastructure.Email;
 using Agathas.Storefront.Infrastructure.Logging;
 using Agathas.Storefront.Infrastructure.Payments;
 using Agathas.Storefront.Infrastructure.UnitOfWork;
-using Agathas.Storefront.Infrastructure.Configuration;
 using Agathas.Storefront.Model.Basket;
 using Agathas.Storefront.Model.Categories;
 using Agathas.Storefront.Model.Customers;
@@ -13,12 +14,13 @@ using Agathas.Storefront.Model.Orders;
 using Agathas.Storefront.Model.Orders.Events;
 using Agathas.Storefront.Model.Products;
 using Agathas.Storefront.Model.Shipping;
+using Agathas.Storefront.Repository.NHibernateR;
+using Agathas.Storefront.Repository.NHibernateR.Repositories;
 using Agathas.Storefront.Services.DomainEventHandlers;
 using Agathas.Storefront.Services.Implementations;
 using Agathas.Storefront.Services.Interfaces;
 using StructureMap;
 using StructureMap.Configuration.DSL;
-using Agathas.Storefront.Infrastructure.Email;
 
 namespace Agathas.Storefront.UI.Web.MVC
 {
@@ -26,96 +28,85 @@ namespace Agathas.Storefront.UI.Web.MVC
     {
         public static void ConfigureDependencies()
         {
-            ObjectFactory.Initialize(x =>
-            {
-                x.AddRegistry<ControllerRegistry>();
-
-            });
+            ObjectFactory.Initialize(x => x.AddRegistry<ControllerRegistry>());
         }
 
         public class ControllerRegistry : Registry
         {
             public ControllerRegistry()
             {
-                // Repositories 
-                ForRequestedType<IOrderRepository>().TheDefault.Is.OfConcreteType
-                         <Repository.NHibernateR.Repositories.OrderRepository>();
-                ForRequestedType<ICustomerRepository>().TheDefault.Is.OfConcreteType
-                         <Repository.NHibernateR.Repositories.CustomerRepository>();
-                ForRequestedType<IBasketRepository>().TheDefault.Is.OfConcreteType
-                         <Repository.NHibernateR.Repositories.BasketRepository>();
-                ForRequestedType<IDeliveryOptionRepository>().TheDefault.Is.OfConcreteType
-                          <Repository.NHibernateR.Repositories.DeliveryOptionRepository>();
-               
-                ForRequestedType<ICategoryRepository>().TheDefault.Is.OfConcreteType
-                         <Repository.NHibernateR.Repositories.CategoryRepository>();
-                ForRequestedType<IProductTitleRepository>().TheDefault.Is.OfConcreteType
-                         <Repository.NHibernateR.Repositories.ProductTitleRepository>();
-                ForRequestedType<IProductRepository>().TheDefault.Is.OfConcreteType
-                         <Repository.NHibernateR.Repositories.ProductRepository>();
-                ForRequestedType<IUnitOfWork>().TheDefault.Is.OfConcreteType
-                         <Repository.NHibernateR.NHUnitOfWork>();
+                // Repositories
+                For<IOrderRepository>().Use
+                    <OrderRepository>();
+                For<ICustomerRepository>().Use
+                    <CustomerRepository>();
+                For<IBasketRepository>().Use
+                    <BasketRepository>();
+                For<IDeliveryOptionRepository>().Use
+                    <DeliveryOptionRepository>();
+
+                For<ICategoryRepository>().Use
+                    <CategoryRepository>();
+                For<IProductTitleRepository>().Use
+                    <ProductTitleRepository>();
+                For<IProductRepository>().Use
+                    <ProductRepository>();
+                For<IUnitOfWork>().Use
+                    <NHUnitOfWork>();
 
                 // Order Service
-                ForRequestedType<IOrderService>().TheDefault.Is.OfConcreteType
-                        <OrderService>();
+                For<IOrderService>().Use
+                    <OrderService>();
 
                 // Payment
-                ForRequestedType<IPaymentService>().TheDefault.Is.OfConcreteType
-                        <PayPalPaymentService>();
+                For<IPaymentService>().Use
+                    <PayPalPaymentService>();
 
                 // Handlers for Domain Events
-                ForRequestedType<IDomainEventHandlerFactory>().TheDefault
-                       .Is.OfConcreteType<StructureMapDomainEventHandlerFactory>();
-                ForRequestedType<IDomainEventHandler<OrderSubmittedEvent>>()
-                       .AddConcreteType<OrderSubmittedHandler>();
+                For<IDomainEventHandlerFactory>().Use<StructureMapDomainEventHandlerFactory>();
+                For<IDomainEventHandler<OrderSubmittedEvent>>()
+                    .Use<OrderSubmittedHandler>();
 
-
-                // Product Catalogue                                         
-                ForRequestedType<IProductCatalogService>().TheDefault.Is.OfConcreteType
-                         <ProductCatalogService>();
+                // Product Catalogue
+                For<IProductCatalogService>().Use
+                    <ProductCatalogService>();
 
                 // Product Catalogue & Category Service with Caching Layer Registration
-                this.InstanceOf<IProductCatalogService>().Is.OfConcreteType<ProductCatalogService>()
-                    .WithName("RealProductCatalogueService");
+                For<IProductCatalogService>().Use<ProductCatalogService>().Named("RealProductCatalogueService");
+                //  .WithName("RealProductCatalogueService");
 
                 // Uncomment the line below to use the product service caching layer
-                //ForRequestedType<IProductCatalogueService>().TheDefault.Is.OfConcreteType<CachedProductCatalogueService>()
+                //ForRequestedType<IProductCatalogueService>().Use<CachedProductCatalogueService>()
                 //    .CtorDependency<IProductCatalogueService>().Is(x => x.TheInstanceNamed("RealProductCatalogueService"));
 
-                ForRequestedType<IBasketService>().TheDefault.Is.OfConcreteType
-                         <BasketService>();
-                ForRequestedType<ICookieStorageService>().TheDefault.Is.OfConcreteType
-                          <CookieStorageService>();
+                For<IBasketService>().Use
+                    <BasketService>();
+                For<ICookieStorageService>().Use
+                    <CookieStorageService>();
 
-
-                // Application Settings                 
-                ForRequestedType<IApplicationSettings>().TheDefault.Is.OfConcreteType
-                         <WebConfigApplicationSettings>();
+                // Application Settings
+                For<IApplicationSettings>().Use
+                    <WebConfigApplicationSettings>();
 
                 // Logger
-                ForRequestedType<ILogger>().TheDefault.Is.OfConcreteType
-                          <Log4NetAdapter>();
+                For<ILogger>().Use
+                    <Log4NetAdapter>();
 
-                // Email Service                 
-                ForRequestedType<IEmailService>().TheDefault.Is.OfConcreteType
-                        <TextLoggingEmailService>();
+                // Email Service
+                For<IEmailService>().Use
+                    <TextLoggingEmailService>();
 
-                ForRequestedType<ICustomerService>().TheDefault.Is.OfConcreteType
-                        <CustomerService>();
+                For<ICustomerService>().Use
+                    <CustomerService>();
 
                 // Authentication
-                ForRequestedType<IExternalAuthenticationService>().TheDefault.Is
-                         .OfConcreteType<JanrainAuthenticationService>();
-                ForRequestedType<IFormsAuthentication>().TheDefault.Is
-                         .OfConcreteType<AspFormsAuthentication>();
-                ForRequestedType<ILocalAuthenticationService>().TheDefault.Is
-                         .OfConcreteType<AspMembershipAuthentication>();
+                For<IExternalAuthenticationService>().Use<JanrainAuthenticationService>();
+                For<IFormsAuthentication>().Use<AspFormsAuthentication>();
+                For<ILocalAuthenticationService>().Use<AspMembershipAuthentication>();
 
                 // Controller Helpers
-                ForRequestedType<IActionArguments>().TheDefault.Is.OfConcreteType
-                     <HttpRequestActionArguments>();
-
+                For<IActionArguments>().Use
+                    <HttpRequestActionArguments>();
             }
         }
     }

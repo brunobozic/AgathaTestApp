@@ -1,7 +1,6 @@
-﻿using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
-namespace MVC.Test
+namespace Agathas.Storefront.UI.Web.MVC5
 {
     public class FilterConfig
     {

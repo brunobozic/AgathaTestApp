@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
-    @using MVC.Test.Helpers
+    @Scripts.Render("~/bundles/modernizr")    
     @using Agathas.Storefront.Controllers.ViewModels.ProductCatalog
+@using Agathas.Storefront.UI.Web.MVC5.Helpers
 </head>
 <body>
     @*<div class="navbar navbar-inverse navbar-fixed-top">
@@ -56,12 +56,14 @@
                     @Html.ActionLink("Log On", "LogOn", "AccountLogOn")<br />
                 }
             </span>
-
         </div>
+
         <div class="topBarContainer">
             <div id="background">
                 <div id="navigation">
                     <asp:ContentPlaceHolder ID="MenuContent" runat="server">
+
+
                     </asp:ContentPlaceHolder>
                 </div>
                 <div id="content">
