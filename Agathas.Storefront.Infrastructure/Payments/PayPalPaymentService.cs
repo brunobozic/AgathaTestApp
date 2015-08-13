@@ -6,7 +6,6 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Web;
-using System.Web.Mvc;
 using Agathas.Storefront.Infrastructure.Configuration;
 
 namespace Agathas.Storefront.Infrastructure.Payments
