@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Text;
 using System.Web.Mvc;
+using System.Web.WebPages.Html;
+using HtmlHelper = System.Web.Mvc.HtmlHelper;
 
 namespace Agathas.Storefront.UI.Web.MVC.Helpers
 {

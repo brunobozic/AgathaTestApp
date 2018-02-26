@@ -15,8 +15,9 @@ namespace Agathas.Storefront.Controllers.JsonDTOs
                 throw new ArgumentNullException("bindingContext");
 
             var serializer = new DataContractJsonSerializer(bindingContext.ModelType);
-            return serializer
-                        .ReadObject(controllerContext.HttpContext.Request.InputStream);
+            var ms = controllerContext.HttpContext.Request.InputStream;
+            ms.Position = 0;
+            return serializer.ReadObject(ms) ;
         }
     } 
 

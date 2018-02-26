@@ -16,11 +16,14 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 using System;
+using System.Linq;
 using System.Web.Mvc;
 using StructureMap.Configuration.DSL;
 using StructureMap.Graph;
 using StructureMap.Pipeline;
 using StructureMap.TypeRules;
+using StructureMap;
+
 
 namespace Agathas.Storefront.UI.Web.MVC5.DependencyResolution {
     public class ControllerConvention : IRegistrationConvention {

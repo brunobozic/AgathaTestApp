@@ -4,7 +4,8 @@
     <property name="connection.driver_class">NHibernate.Driver.SqlClientDriver</property>
     <property name="connection.connection_string">
       <!--Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|Shop.mdf;Integrated Security=True;User Instance=True-->
-      Data Source=MainCore-PC\SQLSERVER2012;Initial Catalog=AgathasClothingStoreDb;User Id=bbozic;Password=bbozic;
+      <!--Data Source=DESKTOP-4DS2D0D\SQLEXPRESS;Initial Catalog=AgathasClothingStoreDb;User Id=develop;Password=develop;-->
+      Data Source=DESKTOP-4DS2D0D\SQLEXPRESS;Initial Catalog=AgathaTestApp;Integrated Security=True
     </property>
     <property name="adonet.batch_size">10</property>
     <property name="show_sql">true</property>

@@ -37,7 +37,7 @@ namespace Agathas.Storefront.Repository.NHibernateR.SessionStorage
 
             config.SetProperty(NHibernate.Cfg.Environment.Dialect, "NHibernate.Dialect.MsSql2008Dialect");
             config.SetProperty(NHibernate.Cfg.Environment.ProxyFactoryFactoryClass, typeof(NHibernate.Bytecode.DefaultProxyFactoryFactory).AssemblyQualifiedName);
-            config.SetProperty(NHibernate.Cfg.Environment.ConnectionString, @"Data Source=MainCore-PC\SQLSERVER2012;Initial Catalog=AgathasClothingStoreDb;User Id=bbozic;Password=bbozic;");
+            config.SetProperty(NHibernate.Cfg.Environment.ConnectionString, @"Data Source=DESKTOP-4DS2D0D\SQLEXPRESS;AttachDbFilename=|DataDirectory|Shop.mdf;Integrated Security=True;User Instance=True;");
             config.SetProperty(NHibernate.Cfg.Environment.FormatSql, "true");
             config.SetProperty(NHibernate.Cfg.Environment.ShowSql, "true");
             config.SetProperty(NHibernate.Cfg.Environment.CommandTimeout, "60");

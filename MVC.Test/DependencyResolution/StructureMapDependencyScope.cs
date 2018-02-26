@@ -19,8 +19,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using Microsoft.Practices.ServiceLocation;
 using StructureMap;
+using CommonServiceLocator;
 
 namespace Agathas.Storefront.UI.Web.MVC5.DependencyResolution {
     /// <summary>
