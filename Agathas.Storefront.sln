@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.30110.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Agathas.Storefront.Controllers", "Agathas.Storefront.Controllers\Agathas.Storefront.Controllers.csproj", "{4400EE5D-37C3-4158-8443-67D534537C03}"
 EndProject
@@ -19,22 +19,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Agathas.Storefront.UI.Web.M
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Agathas.Storefront.UI.Web.MVC5", "MVC.Test\Agathas.Storefront.UI.Web.MVC5.csproj", "{66FC51CF-E5E3-4F7F-8B92-F5109CD8A944}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVC.Test.Tests", "MVC.Test.Tests\MVC.Test.Tests.csproj", "{BE52390D-23CF-40DA-950C-AB2598A8381B}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{6A152CFD-6E40-4EB2-9E12-F8165165214A}"
 	ProjectSection(SolutionItems) = preProject
 		.nuget\NuGet.Config = .nuget\NuGet.Config
 		.nuget\NuGet.exe = .nuget\NuGet.exe
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeleniumUnitTest", "SeleniumUnitTest\SeleniumUnitTest.csproj", "{4FB7DE22-8585-4AAB-93A0-92B5511E29D3}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeleniumSimpleFramework", "SeleniumSimpleFramework\SeleniumSimpleFramework.csproj", "{26D3BF07-8855-46EF-B607-248555DCDBD4}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FacebookCodedUITestProject", "..\CodedUI\FaceboookCodedUITestProject\FacebookCodedUITestProject\FacebookCodedUITestProject.csproj", "{8C66FA18-D305-4B1F-87C8-6019426C1497}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CountTo100", "CountTo100\CountTo100.csproj", "{9366DFA2-3EA3-42BF-82DD-78A6FA7A01D4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -74,27 +64,11 @@ Global
 		{66FC51CF-E5E3-4F7F-8B92-F5109CD8A944}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{66FC51CF-E5E3-4F7F-8B92-F5109CD8A944}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{66FC51CF-E5E3-4F7F-8B92-F5109CD8A944}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BE52390D-23CF-40DA-950C-AB2598A8381B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BE52390D-23CF-40DA-950C-AB2598A8381B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BE52390D-23CF-40DA-950C-AB2598A8381B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4FB7DE22-8585-4AAB-93A0-92B5511E29D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4FB7DE22-8585-4AAB-93A0-92B5511E29D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4FB7DE22-8585-4AAB-93A0-92B5511E29D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4FB7DE22-8585-4AAB-93A0-92B5511E29D3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{26D3BF07-8855-46EF-B607-248555DCDBD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{26D3BF07-8855-46EF-B607-248555DCDBD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{26D3BF07-8855-46EF-B607-248555DCDBD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{26D3BF07-8855-46EF-B607-248555DCDBD4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8C66FA18-D305-4B1F-87C8-6019426C1497}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8C66FA18-D305-4B1F-87C8-6019426C1497}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8C66FA18-D305-4B1F-87C8-6019426C1497}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8C66FA18-D305-4B1F-87C8-6019426C1497}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9366DFA2-3EA3-42BF-82DD-78A6FA7A01D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9366DFA2-3EA3-42BF-82DD-78A6FA7A01D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9366DFA2-3EA3-42BF-82DD-78A6FA7A01D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9366DFA2-3EA3-42BF-82DD-78A6FA7A01D4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {285FAC86-763C-4F72-A3DA-2977FC449565}
 	EndGlobalSection
 EndGlobal
